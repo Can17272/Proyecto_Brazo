@@ -1,0 +1,65 @@
+#:include styles/elegantred.kv
+
+<MainWid>:
+    tpuerto1:t1
+    id:Wid
+    orientation: "vertical"
+    Header:
+        size_hint_y: 0.1
+        Title1:
+            text: root.title
+    Body:
+        size_hint_y: 0.1
+        BoxLayout
+            size_hint_y: 0.2
+            Title2:
+                text: root.subtitle
+    Label:
+        font_size: 50
+        bold: True
+        size_hint:(1.0,0.7)
+        text: str(Wid.numero)
+    
+        Container:
+            Paragraph:
+                text: root.text
+
+    TextInput:
+        halign: "center"
+        id:t1
+        size_hint:(1.0,0.05)
+        multiline: False
+        hint_text: "Tiempo"
+        #text:
+        
+
+        
+    Separator:
+    Footer:
+        size_hint_y: 0.1
+        BoxLayout:
+            spacing:4
+            Btn1:
+                text: "Rutina 1\n Grabar"
+                on_press: Wid.numero=("Leyendo")
+                on_release: root.Serial1()
+            Btn2:
+                text: "Rutina 1\n Mandar"
+                on_release: root.mandar1()
+            Btn3:
+                text: "Rutina2\n Grabar"
+                on_press: Wid.numero=("Leyendo")
+                on_release: root.Serial2()
+            Btn4:
+                text: "Rutina 2\n Mandar"
+                on_release: root.mandar2()
+            Btn5:
+                text: "Rutina3\n Grabar"
+                on_press: Wid.numero=("Leyendo")
+                on_release: root.Serial3()
+            Btn6:
+                text: "Rutina3\n Mandar"
+                on_release: root.mandar3()
+              
+           
+    
