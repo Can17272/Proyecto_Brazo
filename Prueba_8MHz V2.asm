@@ -233,16 +233,16 @@ CHECK_TX1:
     
 RECIBIDO
     CALL    DELAY
-    BTFSC   RCREG
+    BTFSC   PIR1,RCIF
     CALL    REC_POT1
-    BTFSC   RCREG
+    BTFSC   PIR1,RCIF
     CALL    REC_POT2
-    BTFSC   RCREG
+    BTFSC   PIR1,RCIF
     CALL    REC_POT3
-    BTFSC   RCREG
+    BTFSC   PIR1,RCIF
     CALL    REC_POT4
     BTFSC   PORTA,RA4
-    GOTO    LOOP
+    GOTO    PWM1
     GOTO    RECIBIDO
     
 ;*******************************************************************************
