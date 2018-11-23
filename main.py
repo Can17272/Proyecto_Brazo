@@ -10,15 +10,15 @@ import struct
 import time
 Config.set('graphics', 'width', 640)
 Config.set('graphics', 'height', 640)
-ser = serial.Serial(port='COM11', baudrate=2400, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE,
-        bytesize=serial.EIGHTBITS, timeout=0)
+#ser = serial.Serial(port='COM11', baudrate=9600, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE,
+        #bytesize=serial.EIGHTBITS, timeout=0)
 
 
 class MainWid(BoxLayout):
     tpuerto1 = ObjectProperty()
-    title = StringProperty("Controlador Garra")
+    title = StringProperty("Controlador Brazo Mecánico")
     subtitle = StringProperty("Peter Yau; 17914 \n Daniel Cano; 17272")
-    text = StringProperty("ola k ")
+    text = StringProperty("")
     valorescrito = StringProperty()
     rec1 = []
     rec2 = []
@@ -31,7 +31,7 @@ class MainWid(BoxLayout):
     def mandar1(self):
         for man1 in self.rec1:
             ser.write(bytes([int(man1)]))
-            print(bytes([int(man1)]))
+            print(ser.write(bytes(int(man1))))
         self.rec1.clear()
     def mandar2(self):
         for man2 in self.rec2:
@@ -48,11 +48,11 @@ class MainWid(BoxLayout):
     def Serial1(self):
         self.valorescrito=self.tpuerto1.text
         x=int(self.valorescrito, base=0)
-       # x=x/0.1  
+        x=x/0.1  
         ser.flushInput()
         
         while x>0:
-            time.sleep(1)
+            time.sleep(0.1)
             b=ser.read(4)
             #b=int(b,0)
             #print ("hola")
